@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
-import es.hol.monitoringkolam.monitoring.pojo.Kekeruhan;
 
 public class KekeruhanActivity extends AppCompatActivity {
     @BindView(R.id.NTUset)
@@ -58,9 +57,9 @@ public class KekeruhanActivity extends AppCompatActivity {
                         JSONArray jsonArray = jsonData.getJSONArray("Data");
                         for (int i = 0; i < jsonArray.length(); i++){
                             JSONObject kekeruhanObj = jsonArray.getJSONObject(i);
-                            Kekeruhan sensor = new Kekeruhan(kekeruhanObj);
+                            Kekeruhan kekeruhan = new Kekeruhan(kekeruhanObj);
 
-                            kekeruhans.add(sensor);
+                            kekeruhans.add(kekeruhan);
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -76,10 +75,10 @@ public class KekeruhanActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute (ArrayList<Kekeruhan> sensor){
-            super.onPostExecute(sensor);
+        protected void onPostExecute (ArrayList<Kekeruhan> kekeruhan){
+            super.onPostExecute(kekeruhan);
             NTUset.setLayoutManager(new LinearLayoutManager(KekeruhanActivity.this));
-            adapter.setListkekeruhan(sensor);
+            adapter.setListkekeruhan(kekeruhan);
             NTUset.setAdapter(adapter);
         }
     }

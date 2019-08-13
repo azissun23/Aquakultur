@@ -12,38 +12,43 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import es.hol.monitoringkolam.monitoring.pojo.Kekeruhan;
 
 public class KekeruhanAdapter extends RecyclerView.Adapter<KekeruhanAdapter.ViewHolder> {
-    ArrayList<Kekeruhan> listkekeruhan;
+    ArrayList<Kekeruhan> listKekeruhan;
     Context context;
 
-    KekeruhanAdapter(Context context){this.context = context;}
+    public KekeruhanAdapter(Context context){
+        this.context = context;
+    }
 
-    public ArrayList<Kekeruhan>getListkekeruhan(){return listkekeruhan;}
-    public void setListkekeruhan(ArrayList<Kekeruhan>listkekeruhan){
-        this.listkekeruhan = listkekeruhan;
+    public ArrayList<Kekeruhan> getListKekeruhan(){
+        return listKekeruhan;
+    }
+
+    public void setListSensor(ArrayList<Kekeruhan> listKekeruhan){
+
+        this.listKekeruhan = listKekeruhan;
     }
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public KekeruhanAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.kekeruhan_item,viewGroup,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.ntu.setText(getListkekeruhan().get(i).getNtu());
-        viewHolder.status.setText(getListkekeruhan().get(i).getStatus());
+    public void onBindViewHolder(@NonNull KekeruhanAdapter.ViewHolder viewHolder, int i) {
+        viewHolder.Ntu.setText(getListKekeruhan().get(i).getNtu());
+        viewHolder.Status.setText(getListKekeruhan().get(i).getStatus());
     }
 
     @Override
-    public int getItemCount() {return getListkekeruhan().size();}
+    public int getItemCount() {return getListKekeruhan().size();}
     public class ViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.hasilNTU)
-        TextView ntu;
-        @BindView(R.id.status)
-        TextView status;
+        TextView Ntu;
+        @BindView(R.id.statusNtu)
+        TextView Status;
 
         public ViewHolder (@NonNull View itemView){
             super(itemView);
